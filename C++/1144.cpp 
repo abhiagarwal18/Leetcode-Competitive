@@ -1,0 +1,29 @@
+class Solution {
+public:
+    int movesToMakeZigzag(vector<int>& nums) {
+        int moveso= 0, movese=0, n = nums.size();
+        int leftele, rightele;
+        for(int i = 0; i<n;i++){
+                if(i == 0){
+                    leftele = INT_MAX;
+                }
+                else{
+                    leftele = nums[i-1];
+                }
+                
+                if(i==n-1)
+                    rightele = INT_MAX;
+            else
+                rightele = nums[i+1];     
+            
+            
+            if(i %2 == 0){
+                movese += max(0, nums[i]- min(leftele,rightele)+1);
+            }
+            else
+                moveso += max(0, nums[i]- min(leftele,rightele)+1);
+            }          
+        
+        return min(movese, moveso);
+    }
+};
