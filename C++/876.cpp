@@ -11,26 +11,13 @@
 class Solution {
 public:
     ListNode* middleNode(ListNode* head) {
-        if(head->next == NULL){
-            return head;
+        ListNode * slow = head;
+        ListNode * fast = head;
+        while(fast != NULL && fast->next != NULL){ //fast!=Null when total even nodes, second condition when total odd nodes 
+            slow = slow->next;
+            fast = fast->next->next;
         }
-        ListNode* fast = head;
-        ListNode* slow = head;
-        while(true){
-            if(fast->next!=NULL){
-                if(fast->next->next!=NULL){
-                    fast = fast->next->next;
-                    slow = slow->next;
-                }
-                else{
-                    slow = slow->next;
-                    break;
-                }
-            }
-            else{
-                break;
-            }
-        }
+        
         return slow;
     }
 };

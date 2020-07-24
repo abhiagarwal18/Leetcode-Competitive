@@ -23,6 +23,7 @@ public:
             break;
         }
     }
+    //now finding tge beginning point
     fast = head;
     if(flag){ // if there is a cycle
         while(1){
