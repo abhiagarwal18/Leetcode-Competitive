@@ -29,7 +29,19 @@ public:
             temp = nums[i-1];
             nums[i-1] = nums[flag];
             nums[flag] = temp;
-            sort(nums.begin()+i, nums.end());
+            // sort(nums.begin()+i, nums.end()); Not desirable since O(nlogn) time
+            
+            //to sort linearly:
+            
+            int j = n-1;
+            while(i<j)
+            {
+                swap(nums[i], nums[j]);
+                i++;
+                j--;
+                //works since already in descending order post i
+            }            
+            
             return ;
 
             
